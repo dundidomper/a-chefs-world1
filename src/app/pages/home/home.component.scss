@@ -1,0 +1,17 @@
+.review-item .review-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 0;
+  }
+  
+  .review-item p {
+    margin: 0 0 5px 0;
+    white-space: pre-wrap;
+  }
+  
+  .review-item span {
+    align-self: flex-end;
+    font-style: italic;
+  }
+  

@@ -1,0 +1,42 @@
+<!-- Hero szekció -->
+<section class="hero">
+    <h1>Főzz velünk és tanulj a Séf Vloggertől!</h1>
+    <button mat-raised-button color="accent">Nézd meg a recepteket</button>
+  </section>
+  
+  <!-- Legújabb receptek -->
+  <section class="recipes">
+    <h2>Legújabb receptek</h2>
+    <div class="recipe-list">
+      <mat-card *ngFor="let recipe of recipes" class="recipe-card">
+        <mat-card-header>
+          <mat-card-title>{{ recipe.title }}</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="recipe.image" alt="{{ recipe.title }}">
+        <mat-card-content>
+          <p>{{ recipe.description }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary">Részletek</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+
+  
+  <!-- Vélemények -->
+  <section class="reviews">
+    <h2>Vélemények</h2>
+    <mat-list>
+      <mat-list-item *ngFor="let review of reviews">
+        <p>{{ review.text }}</p>
+        <span>— {{ review.author }}</span>
+      </mat-list-item>
+    </mat-list>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Egy séf világa</p>
+  </footer>
+  
