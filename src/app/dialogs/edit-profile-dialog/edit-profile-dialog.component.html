@@ -1,0 +1,23 @@
+<h2>Adatok módosítása</h2>
+
+<form [formGroup]="form">
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Becenév</mat-label>
+    <input matInput formControlName="nickname" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" type="email" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill" class="w-full">
+    <mat-label>Új jelszó (opcionális)</mat-label>
+    <input matInput formControlName="newPassword" type="password" />
+  </mat-form-field>
+</form>
+
+<div class="actions">
+  <button mat-button (click)="onCancel()">Mégse</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Mentés</button>
+</div>

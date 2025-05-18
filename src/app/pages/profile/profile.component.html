@@ -1,0 +1,16 @@
+<div class="profile-container">
+  <h2>Profil</h2>
+
+  <mat-card class="profile-card">
+    <mat-card-content>
+      <p><strong>Név:</strong> {{ nickname || 'Nincs megadva' }}</p>
+      <p><strong>Email:</strong> {{ email || '...' }}</p>
+      <p><strong>Jelszó:</strong> ********</p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onEditProfile()">Adatok módosítása</button>
+      <button mat-raised-button class="danger-button" (click)="onDeleteProfile()">Profil törlése</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

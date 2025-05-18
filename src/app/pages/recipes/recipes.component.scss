@@ -1,0 +1,19 @@
+.recipe-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 16px;
+}
+
+
+@media (max-width: 768px) {
+  .recipe-container {
+    justify-content: center;
+  }
+}
+
+.recipe-card {
+  width: 300px;
+  padding: 16px;
+  box-sizing: border-box;
+}

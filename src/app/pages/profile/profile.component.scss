@@ -1,0 +1,16 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.danger-button {
+  background-color: #d32f2f;
+  color: #ffffff;
+}
