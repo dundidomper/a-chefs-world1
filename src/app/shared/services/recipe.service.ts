@@ -7,7 +7,7 @@ import {
   orderBy,
   limit,
   getDocs,
-  QueryConstraint
+  QueryConstraint, addDoc
 } from '@angular/fire/firestore';
 import { Recipe } from '../models/recipe.model';
 import { Observable } from 'rxjs';
@@ -20,6 +20,11 @@ export class RecipeService {
   getRecipes(): Observable<Recipe[]> {
     const recipeRef = collection(this.firestore, 'recipes');
     return collectionData(recipeRef, { idField: 'id' }) as Observable<Recipe[]>;
+  }
+
+  addRecipe(recipe: Partial<Recipe>) {
+    const recipeRef = collection(this.firestore, 'recipes');
+    return addDoc(recipeRef, recipe);
   }
 
   async getFilteredRecipes(
@@ -56,4 +61,17 @@ export class RecipeService {
       ...doc.data()
     })) as Recipe[];
   }
+
+  async getRandomRecipeByType(type: string): Promise<Recipe | undefined> {
+    const recipeRef = collection(this.firestore, 'recipes');
+    const q = query(recipeRef, where('type', '==', type));
+    const snapshot = await getDocs(q);
+    const recipes = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })) as Recipe[];
+
+    if (recipes.length === 0) return undefined;
+
+    const randomIndex = Math.floor(Math.random() * recipes.length);
+    return recipes[randomIndex];
+  }
+
 }

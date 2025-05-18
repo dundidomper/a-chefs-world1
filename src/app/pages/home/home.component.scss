@@ -1,17 +1,41 @@
-.review-item .review-content {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 10px 0;
+.home-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+  text-align: center;
+
+  h1 {
+    color: #6ddd08;
+    margin-bottom: 0.5rem;
   }
-  
-  .review-item p {
-    margin: 0 0 5px 0;
-    white-space: pre-wrap;
+
+  h2 {
+    margin: 2rem 0 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
   }
-  
-  .review-item span {
-    align-self: flex-end;
-    font-style: italic;
+
+  .recipe-list {
+    display: grid;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    mat-card, .recipe-card {
+      text-align: left;
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
   }
-  
+
+  button {
+    background-color: #6ddd08;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+
+    &:hover {
+      background-color: #5ac208;
+    }
+  }
+}

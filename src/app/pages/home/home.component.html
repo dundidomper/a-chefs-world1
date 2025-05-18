@@ -1,42 +1,48 @@
-<!-- Hero szekció -->
-<section class="hero">
-    <h1>Főzz velünk és tanulj a Séf Vloggertől!</h1>
-    <button mat-raised-button color="accent">Nézd meg a recepteket</button>
-  </section>
-  
-  <!-- Legújabb receptek -->
-  <section class="recipes">
-    <h2>Legújabb receptek</h2>
-    <div class="recipe-list">
-      <mat-card *ngFor="let recipe of recipes" class="recipe-card">
-        <mat-card-header>
-          <mat-card-title>{{ recipe.title }}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image [src]="recipe.image" alt="{{ recipe.title }}">
-        <mat-card-content>
-          <p>{{ recipe.description }}</p>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-button color="primary">Részletek</button>
-        </mat-card-actions>
-      </mat-card>
-    </div>
-  </section>
+<div class="home-container">
+  <h1>Üdvözlünk Egy Séf világában!</h1>
+  <p>Fedezd fel a legjobb házi recepteket vagy adj hozzá sajátot!</p>
 
-  
-  <!-- Vélemények -->
-  <section class="reviews">
-    <h2>Vélemények</h2>
-    <mat-list>
-      <mat-list-item *ngFor="let review of reviews">
-        <p>{{ review.text }}</p>
-        <span>— {{ review.author }}</span>
-      </mat-list-item>
-    </mat-list>
-  </section>
-  
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 Egy séf világa</p>
-  </footer>
-  
+  <h2>Íme, a véletlenszerű menüsorod:</h2>
+
+  <div class="recipe-list">
+    <ng-container *ngIf="randomSoup">
+      <mat-card class="recipe-card">
+        <mat-card-title>{{ randomSoup.name }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Típus:</strong> {{ randomSoup.type | recipeType }}</p>
+          <p><strong>Nehézség:</strong> {{ randomSoup.difficulty | recipeDifficulty }}</p>
+          <p><strong>Időtartam:</strong> {{ randomSoup.duration }} perc</p>
+          <p>{{ randomSoup.shortDescription }}</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+
+    <ng-container *ngIf="randomMain">
+      <mat-card class="recipe-card">
+        <mat-card-title>{{ randomMain.name }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Típus:</strong> {{ randomMain.type | recipeType }}</p>
+          <p><strong>Nehézség:</strong> {{ randomMain.difficulty | recipeDifficulty }}</p>
+          <p><strong>Időtartam:</strong> {{ randomMain.duration }} perc</p>
+          <p>{{ randomMain.shortDescription }}</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+
+    <ng-container *ngIf="randomDessert">
+      <mat-card class="recipe-card">
+        <mat-card-title>{{ randomDessert.name }}</mat-card-title>
+        <mat-card-content>
+          <p><strong>Típus:</strong> {{ randomDessert.type | recipeType }}</p>
+          <p><strong>Nehézség:</strong> {{ randomDessert.difficulty | recipeDifficulty }}</p>
+          <p><strong>Időtartam:</strong> {{ randomDessert.duration }} perc</p>
+          <p>{{ randomDessert.shortDescription }}</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+  </div>
+
+  <button mat-raised-button color="primary" class="button-primary" routerLink="/recipes/new">
+    Adj hozzá saját receptet!
+  </button>
+</div>

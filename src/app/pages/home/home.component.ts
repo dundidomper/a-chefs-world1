@@ -1,34 +1,45 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card'
-import { MatGridListModule } from '@angular/material/grid-list';
-import { MatListModule } from '@angular/material/list';
+import { RecipeService} from "../../shared/services/recipe.service";
+import { Recipe } from '../../shared/models/recipe.model';
+import { RouterModule } from '@angular/router';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { RecipeTypePipe } from '../../shared/pipes/recipe-type.pipe';
+import { RecipeDifficultyPipe } from '../../shared/pipes/recipe-difficulty.pipe';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [
     CommonModule,
+    RouterModule,
     MatCardModule,
-    MatGridListModule,
-    MatListModule
-
+    MatButtonModule,
+    RecipeTypePipe,
+    RecipeDifficultyPipe,
   ],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.scss'
-  
-  
+  styleUrls: ['./home.component.scss']
 })
+export class HomeComponent implements OnInit {
+  private recipeService = inject(RecipeService);
 
+  randomSoup?: Recipe;
+  randomMain?: Recipe;
+  randomDessert?: Recipe;
 
-export class HomeComponent {
-  recipes = [
-    { title: 'Marhapörkölt', description: 'A magyar konyha klasszikusa.', image: 'assets/porkolt.jpg' },
-    { title: 'Csirkepaprikás', description: 'Tejfölös, szaftos finomság.', image: 'assets/csirkepaprikas.jpg' }
-  ];
-  
-  reviews = [
-    { text: 'Mindig jókat olvasok!', author: 'Kati'},
-    { text: 'Nagyon szeretem!', author: 'Béla'}
-  ];
+  ngOnInit(): void {
+    this.loadRandomRecipes();
+  }
 
+  async loadRandomRecipes() {
+    const soups = await this.recipeService.getRandomRecipeByType('soup');
+    const mains = await this.recipeService.getRandomRecipeByType('main');
+    const desserts = await this.recipeService.getRandomRecipeByType('dessert');
+
+    this.randomSoup = soups;
+    this.randomMain = mains;
+    this.randomDessert = desserts;
+  }
 }

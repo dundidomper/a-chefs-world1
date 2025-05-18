@@ -1,0 +1,45 @@
+<h2>Új recept hozzáadása</h2>
+
+<form (ngSubmit)="addRecipe()" class="recipe-form">
+  <mat-form-field appearance="fill">
+    <mat-label>Név</mat-label>
+    <input matInput [(ngModel)]="name" name="name" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Rövid leírás</mat-label>
+    <input matInput [(ngModel)]="shortDescription" name="shortDescription" required />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Leírás</mat-label>
+    <textarea matInput [(ngModel)]="longDescription" name="longDescription"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Típus</mat-label>
+    <mat-select [(ngModel)]="type" name="type" required>
+      <mat-option value="soup">Leves</mat-option>
+      <mat-option value="main">Főétel</mat-option>
+      <mat-option value="dessert">Desszert</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Nehézség</mat-label>
+    <mat-select [(ngModel)]="difficulty" name="difficulty">
+      <mat-option value="easy">Könnyű</mat-option>
+      <mat-option value="medium">Közepes</mat-option>
+      <mat-option value="hard">Nehéz</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Elkészítési idő (perc)</mat-label>
+    <input matInput type="number" [(ngModel)]="duration" name="duration" />
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">
+    Mentés
+  </button>
+</form>

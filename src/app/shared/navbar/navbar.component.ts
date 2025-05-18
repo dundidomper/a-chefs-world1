@@ -4,7 +4,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { HoverHighlightDirective } from '../../directives/hover-highlight.directive';
+import { HoverHighlightDirective} from "../directives/hover-highlight.directive";
 import { Auth } from '@angular/fire/auth';
 import { onAuthStateChanged } from 'firebase/auth';
 import {NgIf} from "@angular/common";
@@ -37,7 +37,7 @@ export class NavbarComponent {
 
   logout() {
     this.auth.signOut().then(() => {
-      this.router.navigate(['/']);  // Visszairányítás főoldalra
+      this.router.navigate(['/']);
     });
   }
 

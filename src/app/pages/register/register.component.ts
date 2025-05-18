@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import { Firestore, doc, setDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../shared/services/auth.service';
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatFormFieldModule} from "@angular/material/form-field";
-import {UserModel} from "../../models/user.model";
+import {UserModel} from "../../shared/models/user.model";
 
 
 @Component({
@@ -56,7 +56,6 @@ export class RegisterComponent {
         nickname: nickname!
       };
 
-      // Mentés Firestore-ba
       const userRef = doc(this.firestore, `users/${uid}`);
       await setDoc(userRef, newUser);
 
@@ -71,6 +70,3 @@ export class RegisterComponent {
     return this.registerForm.value.password === this.registerForm.value.confirmPassword;
   }
 }
-//register() {
-//  this.authService.register(this.email, this.password)
-//    .then(() => alert('Sikeres regisztráció!'))

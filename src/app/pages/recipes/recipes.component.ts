@@ -1,17 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RecipeService } from '../../services/recipe.service';
-import { Recipe } from '../../models/recipe.model';
+import { RecipeService } from '../../shared/services/recipe.service';
+import { Recipe } from '../../shared/models/recipe.model';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import {RecipeTypePipe} from "../../pipes/recipe-type.pipe";
-import {RecipeDifficultyPipe} from "../../pipes/recipe-difficulty.pipe";
+import {RecipeTypePipe} from "../../shared/pipes/recipe-type.pipe";
+import {RecipeDifficultyPipe} from "../../shared/pipes/recipe-difficulty.pipe";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatOptionModule} from "@angular/material/core";
 import {FormsModule} from "@angular/forms";
 import {MatInput} from "@angular/material/input";
 import {MatSelectModule} from "@angular/material/select";
 import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-toggle";
+import {RouterLink} from "@angular/router";
 
 
 @Component({
@@ -21,7 +22,7 @@ import {MatButtonToggle, MatButtonToggleGroup} from "@angular/material/button-to
     MatButtonModule, RecipeTypePipe,
     RecipeTypePipe, RecipeTypePipe,
     RecipeTypePipe, RecipeDifficultyPipe,
-    MatFormFieldModule, MatOptionModule, FormsModule, MatSelectModule, MatInput, MatButtonToggleGroup, MatButtonToggle,],
+    MatFormFieldModule, MatOptionModule, FormsModule, MatSelectModule, MatInput, MatButtonToggleGroup, MatButtonToggle, RouterLink,],
   templateUrl: './recipes.component.html',
   styleUrls: ['./recipes.component.scss']
 })

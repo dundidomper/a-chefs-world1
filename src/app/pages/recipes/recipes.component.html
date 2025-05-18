@@ -1,4 +1,4 @@
-<div class="filter-bar">
+<div class="filters-container">
   <mat-form-field appearance="fill">
     <mat-label>Típus</mat-label>
     <mat-select [(ngModel)]="selectedType">
@@ -30,6 +30,9 @@
   </mat-button-toggle-group>
 
   <button mat-raised-button color="primary" (click)="applyFilters()">Szűrés</button>
+  <button mat-raised-button color="accent" class="add-button" routerLink="/recipes/new">
+    Új recept hozzáadása
+  </button>
 </div>
 
 

@@ -1,5 +1,5 @@
 export interface Recipe {
-  id?: string; // Firestore dokumentum azonosítója
+  id?: string;
   name: string;
   type: string;
   difficulty: string;
