@@ -4,10 +4,16 @@
 
   <!-- Asztali menü -->
   <div class="desktop-menu">
-    <a mat-button routerLink="/">Főoldal</a>
-    <a mat-button routerLink="/recipes">Receptek</a>
-    <a mat-button routerLink="/login">Bejelentkezés</a>
-    <a mat-button routerLink="/register">Regisztráció</a>
+    <a mat-button routerLink="/" appHoverHighlight>Főoldal</a>
+    <a mat-button routerLink="/recipes" appHoverHighlight>Receptek</a>
+    <ng-container *ngIf="!isLoggedIn(); else loggedIn">
+      <a mat-button routerLink="/login" appHoverHighlight>Bejelentkezés</a>
+      <a mat-button routerLink="/register" appHoverHighlight>Regisztráció</a>
+    </ng-container>
+    <ng-template #loggedIn>
+      <a mat-button routerLink="/profile" appHoverHighlight>Profil</a>
+      <a mat-button (click)="logout()" appHoverHighlight>Kijelentkezés</a>
+    </ng-template>
   </div>
 
   <!-- Mobil menü -->
@@ -16,10 +22,16 @@
       <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink="/">Főoldal</button>
-      <button mat-menu-item routerLink="/recipes">Receptek</button>
-      <button mat-menu-item routerLink="/login">Bejelentkezés</button>
-      <button mat-menu-item routerLink="/register">Regisztráció</button>
+      <button mat-menu-item routerLink="/" appHoverHighlight>Főoldal</button>
+      <button mat-menu-item routerLink="/recipes" appHoverHighlight>Receptek</button>
+      <ng-container *ngIf="!isLoggedIn(); else mobileLoggedIn">
+        <button mat-menu-item routerLink="/login" appHoverHighlight>Bejelentkezés</button>
+        <button mat-menu-item routerLink="/register" appHoverHighlight>Regisztráció</button>
+      </ng-container>
+      <ng-template #mobileLoggedIn>
+        <button mat-menu-item routerLink="/profile" appHoverHighlight>Profil</button>
+        <button mat-menu-item (click)="logout()" appHoverHighlight>Kijelentkezés</button>
+      </ng-template>
     </mat-menu>
   </div>
 </mat-toolbar>

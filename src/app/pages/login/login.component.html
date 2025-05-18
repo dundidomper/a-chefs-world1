@@ -11,6 +11,7 @@
       <input matInput formControlName="password" type="password" required />
     </mat-form-field>
 
-    <button mat-raised-button color="primary" type="submit">Bejelentkezés</button>
+    <button mat-raised-button color="primary" [disabled]="!loginForm.valid">Bejelentkezés</button>
+
   </form>
 </div>

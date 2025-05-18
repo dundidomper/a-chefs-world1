@@ -1,35 +1,45 @@
 import { Component } from '@angular/core';
-import {FormBuilder, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
+import {FormBuilder, ReactiveFormsModule, Validators} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
+import {MatInputModule} from "@angular/material/input";
+import {MatButtonModule} from "@angular/material/button";
+import {MatFormFieldModule} from "@angular/material/form-field";
 
 @Component({
   selector: 'app-login',
-  standalone: true,
+  templateUrl: './login.component.html',
   imports: [
-    FormsModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    ReactiveFormsModule,
   ],
-  templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-
 export class LoginComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   });
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+  async onSubmit() {
+    if (this.loginForm.invalid) return;
+
+    const { email, password } = this.loginForm.value;
+
+    try {
+      await this.authService.login(email!, password!);
+      this.router.navigate(['/']);
+    } catch (error) {
+      console.error(error);
+      alert('Sikertelen bejelentkezés!');
     }
   }
 }

@@ -1,7 +1,5 @@
-export interface User {
-  id: string;
-  username: string;
+export interface UserModel {
+  uid: string;
   email: string;
-  passwordHash?: string; // ha nincs backend, nem kötelező
-  createdAt: Date;
+  nickname: string;
 }
